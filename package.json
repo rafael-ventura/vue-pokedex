@@ -10,6 +10,8 @@
   "dependencies": {
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "material-design-icons": "^3.0.1",
+    "materialize-css": "^1.0.0-rc.2",
     "pokemon-sprites": "github:PokeAPI/sprites",
     "vue": "^2.6.11",
     "vue-router": "^3.4.9"

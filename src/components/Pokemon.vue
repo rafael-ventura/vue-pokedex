@@ -5,18 +5,15 @@
     </div>
     <div class="row">
       <div v-for="pokemon in pokemons" :key="pokemon.id" class="col s1 m2">
-        <div class="card">
+        <div id="pokeCards" class="card">
           <div class="card-image">
             <img class="responsive-img" :src="pokemon.sprites.front_default" />
-            <span class="card-title black-text">
-              {{ pokemon.name }}
-            </span>
           </div>
           <div class="card-content black-text">
-            {{ pokemon.id + ' ' + pokemon.name }}
+            <p>{{ `#${pokemon.id}.  ${pokemon.name}` }}</p>
           </div>
-          <div class="card-action">
-            <a href="#"> View Poke Details</a>
+          <div id="linkDetails" class="card-action">
+            <a id="pokeDetails" href="#"> View Poke Details </a>
           </div>
         </div>
       </div>
@@ -63,4 +60,27 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color:#fbe9e7;
+}
+h1 {
+  color: #ef5350;
+}
+#linkDetails {
+  font-size: 10px;
+  text-align: center;
+}
+#pokeDetails {
+  color: #607d8b;
+}
+#pokeDetails:hover {
+  color: aqua;
+}
+#pokeCards {
+  font-size: 14px;
+  background-color:#90a4ae ;
+}
+</style>

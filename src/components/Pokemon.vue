@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       pokemons: [],
-      url: 'http://pokeapi.co/api/v2/pokemon?limit=151',
+      url: 'https://pokeapi.co/api/v2/pokemon?limit=151',
     };
   },
   mounted() {

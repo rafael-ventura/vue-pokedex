@@ -1,19 +1,18 @@
 <template>
-  <div class="app">
-    <div class="row">
-      <h1 class="center-align">Pokedex</h1>
-    </div>
-    <div class="row">
-      <div v-for="pokemon in pokemons" :key="pokemon.id" class="col s1 m2">
-        <div id="pokeCards" class="card">
-          <div class="card-image">
-            <img class="responsive-img" :src="pokemon.sprites.front_default" />
-          </div>
-          <div class="card-content black-text">
-            <p>{{ `#${pokemon.id}.  ${pokemon.name}` }}</p>
-          </div>
-          <div id="linkDetails" class="card-action">
-            <a id="pokeDetails" href="#"> View Poke Details </a>
+  <div class="container">
+    <div class="app">
+      <div class="row">
+        <div v-for="pokemon in pokemons" :key="pokemon.id" class="col s1 m2">
+          <div class="card">
+            <div class="card-image">
+              <img class="pokeSprites" :src="pokemon.sprites.front_default" />
+            </div>
+            <div class="card-content black-text">
+              <p>{{ `#${pokemon.id}. ${pokemon.name}` }}</p>
+            </div>
+            <div class="card-action linkDetails">
+              <a href="#"> View Poke Details </a>
+            </div>
           </div>
         </div>
       </div>
@@ -64,23 +63,35 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
   font-family: 'Press Start 2P', cursive;
-  background-color:#fbe9e7;
+  background-color: #333333;
 }
-h1 {
+.title {
   color: #ef5350;
 }
-#linkDetails {
+.card {
+  padding: 2%;
+  height: auto;
+  background-color: #ef53506b;
+}
+.card .card-content {
+  text-align: left;
+  font-size: 11px;
+  display: inline;
+}
+.card-image {
+  height: 60%;
+  width: 60%;
+  margin: auto;
+}
+.linkDetails {
   font-size: 10px;
   text-align: center;
 }
-#pokeDetails {
-  color: #607d8b;
-}
-#pokeDetails:hover {
-  color: aqua;
-}
-#pokeCards {
-  font-size: 14px;
-  background-color:#90a4ae ;
+
+a {
+  font-size: 9px;
+  margin: auto;
+  color: #ef5350;
+  display: inline;
 }
 </style>

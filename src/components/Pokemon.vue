@@ -1,6 +1,11 @@
 <template>
   <div class="container">
     <div class="app">
+      <SearchList
+        v-for="pokemon in pokemons"
+        v-bind:key="pokemon.id"
+        v-bind:pokemon="pokemon.name"
+      />
       <div class="row">
         <div v-for="pokemon in pokemons" :key="pokemon.id" class="col s1 m2">
           <div class="card">
@@ -23,9 +28,13 @@
 <script>
 import axios from 'axios/dist/axios';
 import M from 'materialize-css';
+import SearchList from './SearchList';
 
 export default {
   name: 'Pokemon',
+  components: {
+    SearchList,
+  },
   data() {
     return {
       pokemons: [],

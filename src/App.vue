@@ -3,20 +3,20 @@
     <div class="row">
       <h1 class="center-align title">Pokedex</h1>
     </div>
-    <SearchList />
+
     <Pokemon />
   </div>
 </template>
 
 <script>
 import Pokemon from './components/Pokemon';
-import SearchList from './components/SearchList';
+/* import SearchList from './components/SearchList'; */
 import M from 'materialize-css';
 export default {
   name: 'App',
   components: {
     Pokemon,
-    SearchList,
+    /* SearchList, */
   },
   mounted() {
     M.AutoInit();

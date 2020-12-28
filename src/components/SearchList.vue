@@ -2,13 +2,16 @@
   <div class="container">
     <div class="app">
       <div class="row">
-        {{ $props.pokemons }}
         <div class="col s12 m4 l2"></div>
         <div class="input-field col s8">
-          <input type="text" />
+          <input
+            type="text"
+            v-bind="value"
+            v-on:input="$emit('input,$events.target.value')"
+          />
           <a
             class="btn-floating btn-large waves-effect waves-light red"
-            @click="searchPokemon({ name: 'wartortle', id: 8 })"
+            v-on:click="searchPokemon(value)"
             ><i class="material-icons">search</i>
           </a>
           <label for="last_name">Search a Pokemon:</label>
@@ -27,25 +30,14 @@ export default {
       type: Array,
       required: true,
     },
+    value: {},
   },
   data: function() {
     return {};
   },
   methods: {
-    searchPokemon: function(filter) {
-      let filtered = this.$props.pokemons.map((element) => {
-        if (element.name === filter.name) {
-          filtered.push(element);
-        } else if (element.id === filter.id) {
-          filtered.push(element);
-        }
-      });
-      return filtered;
-    },
-  },
-  computed: {
-    show: function() {
-      return console.log(this.$props.pokemons);
+    searchPokemon(value) {
+      this.$emit('searchPokemon', value);
     },
   },
 };

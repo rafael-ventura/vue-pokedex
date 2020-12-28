@@ -3,10 +3,18 @@
     <div class="row">
       <h1 class="center-align title">Pokedex</h1>
     </div>
-    <SearchList :pokemons="pokemons" />
+    <div class="input-field col s8">
+      <input type="text" v-model="search" />
+      <a
+        class="btn-floating btn-large waves-effect waves-light red"
+        v-on:click="pokeSearch(this.search)"
+        ><i class="material-icons">search</i>
+      </a>
+      <label for="last_name">Search a Pokemon:</label>
+    </div>
     <div class="row">
       <PokeCard
-        v-for="pokemon in pokemons"
+        v-for="pokemon in filteredPokemons"
         :key="pokemon.id"
         v-bind:pokemon="pokemon"
       />
@@ -16,7 +24,7 @@
 
 <script>
 import PokeCard from './components/PokeCard';
-import SearchList from './components/SearchList';
+
 import M from 'materialize-css';
 import axios from 'axios';
 
@@ -24,12 +32,13 @@ export default {
   name: 'App',
   components: {
     PokeCard,
-    SearchList,
   },
   data: function() {
     return {
       pokemons: [],
       url: 'https://pokeapi.co/api/v2/pokemon?limit=151',
+      filteredPokemons: [],
+      search: '',
     };
   },
   methods: {
@@ -44,9 +53,21 @@ export default {
         })
         .then((results) => {
           this.pokemons = results.map((res) => res.data);
-          this.pokemons;
+          this.filteredPokemons = this.pokemons;
         })
-        .catch(() => {});
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    pokeSearch(search) {
+      this.filteredPokemons = this.pokemons;
+      if (search == '' || search == ' ') {
+        this.filteredPokemons = this.pokemons;
+      } else {
+        this.filteredPokemons = this.pokemons.filter((pokemon) => {
+          pokemon.name == search;
+        });
+      }
     },
   },
   mounted() {

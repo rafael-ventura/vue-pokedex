@@ -5,19 +5,16 @@
     </div>
     <div class="input-field col s8">
       <input type="text" v-model="search" />
-      <a
-        class="btn-floating btn-large waves-effect waves-light red"
-        v-on:click="pokeSearch(this.search)"
-        ><i class="material-icons">search</i>
-      </a>
       <label for="last_name">Search a Pokemon:</label>
     </div>
     <div class="row">
-      <PokeCard
-        v-for="pokemon in filteredPokemons"
-        :key="pokemon.id"
-        v-bind:pokemon="pokemon"
-      />
+      <div>
+        <PokeCard
+          v-for="(pokemon, index) in searchResult()"
+          :key="index"
+          v-bind:pokemon="pokemon"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -37,44 +34,41 @@ export default {
     return {
       pokemons: [],
       url: 'https://pokeapi.co/api/v2/pokemon?limit=151',
-      filteredPokemons: [],
       search: '',
     };
   },
   methods: {
-    getAllPoke: async function() {
-      await axios
-        .get(this.url)
-        .then((response) => {
-          return response.data.results;
-        })
-        .then((results) => {
-          return Promise.all(results.map((res) => axios.get(res.url)));
-        })
-        .then((results) => {
-          this.pokemons = results.map((res) => res.data);
-          this.filteredPokemons = this.pokemons;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    pokeSearch(search) {
-      this.filteredPokemons = this.pokemons;
-      if (search == '' || search == ' ') {
-        this.filteredPokemons = this.pokemons;
+    searchResult: function() {
+      if (this.busca == '' || this.busca == ' ') {
+        return this.pokemons;
       } else {
-        this.filteredPokemons = this.pokemons.filter((pokemon) => {
-          pokemon.name == search;
-        });
+        return this.pokemons.filter((pokemon) => pokemon.name == this.busca);
       }
     },
   },
-  mounted() {
+  mounted: function() {
     M.AutoInit();
   },
-  created() {
-    this.getAllPoke();
+  created: function() {
+    axios
+      .get(this.url)
+      .then((response) => {
+        return response.data.results;
+      })
+      .then((results) => {
+        return Promise.all(results.map((res) => axios.get(res.url)));
+      })
+      .then((results) => {
+        this.pokemons = results.map((res) => res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  computed: {
+    searching: function() {
+      return this.searchResult();
+    },
   },
 };
 </script>

@@ -10,7 +10,7 @@
     <div class="row">
       <div>
         <PokeCard
-          v-for="(pokemon, index) in searchResult()"
+          v-for="(pokemon, index) in pokemons"
           :key="index"
           v-bind:pokemon="pokemon"
         />

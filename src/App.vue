@@ -10,7 +10,7 @@
     <div class="row">
       <div>
         <PokeCard
-          v-for="(pokemon, index) in pokemons"
+          v-for="(pokemon, index) in searchResult"
           :key="index"
           v-bind:pokemon="pokemon"
         />
@@ -37,15 +37,16 @@ export default {
       search: '',
     };
   },
-  methods: {
-    searchResult: function() {
-      if (this.busca == '' || this.busca == ' ') {
+  methods: { 
+    filtering: function (search) {
+      if (search == '' || search == ' ') {
         return this.pokemons;
       } else {
-        return this.pokemons.filter((pokemon) => pokemon.name == this.busca);
+        console.log(search);
+        return this.pokemons.filter(pokemon => pokemon.name.includes(search));
       }
-    },
-  },
+    } 
+   },
   mounted: function() {
     M.AutoInit();
   },
@@ -66,9 +67,9 @@ export default {
       });
   },
   computed: {
-    searching: function() {
-      return this.searchResult();
-    },
+    searchResult() {
+      return this.filtering(this.search);
+    }
   },
 };
 </script>

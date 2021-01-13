@@ -3,18 +3,16 @@
     <div class="row">
       <h1 class="center-align title">Pokedex</h1>
     </div>
-    <div class="input-field col s8">
-      <input type="text" v-model="search" />
+    <div class="input-field col s8 ">
+      <input class='white-text' type="text" v-model="search" />
       <label for="last_name">Search a Pokemon:</label>
     </div>
     <div class="row">
-      <div>
         <PokeCard
           v-for="(pokemon, index) in searchResult"
           :key="index"
           v-bind:pokemon="pokemon"
         />
-      </div>
     </div>
   </div>
 </template>
@@ -76,14 +74,6 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 body {
   font-family: 'Press Start 2P', cursive;
   background-color: #333333;
@@ -91,4 +81,5 @@ body {
 .title {
   color: #ef5350;
 }
+
 </style>

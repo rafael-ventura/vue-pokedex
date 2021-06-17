@@ -2,6 +2,28 @@
 
 a simple pokedex to consult the first generation of pokemon's
 
+# vue-pokedex
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
 <!---
 http://dontpad.com/vuejs/pokerafa
 refactoring code

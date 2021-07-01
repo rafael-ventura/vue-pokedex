@@ -24,25 +24,25 @@
 
 <script>
 export default {
-  name: 'SearchList',
+  name: "SearchList",
   props: {
     pokemons: {
       type: Array,
-      required: true,
+      required: true
     },
-    value: {},
+    value: {}
   },
   data: function() {
     return {};
   },
   methods: {
     searchPokemon(value) {
-      this.$emit('searchPokemon', value);
-    },
-  },
+      this.$emit("searchPokemon", value);
+    }
+  }
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 </style>

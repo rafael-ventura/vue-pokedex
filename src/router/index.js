@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import App from '../App.vue'
+import HomePage from '@/views/HomePage.vue'
+import PokemonDetail from '@/views/PokemonDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -8,12 +9,17 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: App
+    component: HomePage
   },
   {
-    path: '/Detail/:id',
-    name: 'Detail',
-    component: () => import('../views/PokeDetail.vue')
+    path: '/pokemon/:id',
+    name: 'PokemonDetail',
+    component: PokemonDetail
+  },
+  {
+    path: '/pokemon/:id',
+    name: 'PokemonDetails',
+    component: () => import('../views/PokemonDetails.vue')
   }
 ]
 
@@ -23,4 +29,4 @@ const router = new VueRouter({
   routes
 })
 
-export default router
+export default router 

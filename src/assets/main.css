@@ -1,0 +1,21 @@
+/* Global styles */
+:root {
+  --primary-color: #ff3d3d;
+  --secondary-color: #ffed3d;
+  --background-dark: #1e2024;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 

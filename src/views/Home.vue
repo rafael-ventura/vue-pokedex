@@ -8,12 +8,12 @@
       
       <div class="text-column">
         <div class="text-content">
-          <h1>Bem-vindo à Pokédex</h1>
+          <h1 class="text-gradient">Bem-vindo à Pokédex</h1>
           <p>Explore o mundo dos Pokémon da primeira geração</p>
           <Button 
             label="Entrar na Pokédex" 
             icon="pi pi-arrow-right" 
-            class="p-button-rounded p-button-lg custom-button" 
+            class="p-button-rounded p-button-lg btn-primary" 
             @click="navigateToPokedex"
             :loading="loading"
           />
@@ -46,13 +46,13 @@ export default {
 
 <style scoped>
 .home-page {
-  height: 100vh; /* Altura fixa */
+  height: 100vh;
   min-height: 100vh;
   display: flex;
   background-color: var(--background-color);
   padding: 0;
   overflow: hidden;
-  position: fixed; /* Prevenir scroll */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -68,7 +68,7 @@ export default {
   grid-template-columns: minmax(350px, 500px) 150px minmax(350px, 500px);
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: var(--spacing-lg);
   position: relative;
   overflow: hidden;
 }
@@ -77,29 +77,29 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem; /* Reduzindo ainda mais o espaço */
-  margin-top: -15vh; /* Movendo para cima */
+  gap: var(--spacing-md);
+  margin-top: -15vh;
 }
 
 .pokemon-logo {
   width: 100%;
-  max-width: 350px; /* Logo menor */
+  max-width: 350px;
   height: auto;
   filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.1));
 }
 
 .pikachu-image {
   width: 100%;
-  max-width: 380px; /* Pikachu menor */
+  max-width: 380px;
   height: auto;
   filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.15));
   animation: float 6s ease-in-out infinite;
-  margin-top: -2rem; /* Aproximando do logo */
+  margin-top: -2rem;
 }
 
 .text-column {
   grid-column: 3;
-  align-self: center; /* Centralizar verticalmente */
+  align-self: center;
   height: 100%;
   display: flex;
   align-items: center;
@@ -112,45 +112,19 @@ export default {
 
 h1 {
   font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--spacing-lg);
 }
 
 p {
   font-size: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-xl);
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-:deep(.custom-button) {
-  background: linear-gradient(45deg, var(--primary-color), #ff6b6b);
-  border: none;
-  padding: 1.2rem 2.5rem;
+:deep(.btn-primary) {
+  padding: var(--spacing-lg) var(--spacing-xl);
   font-size: 1.2rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-:deep(.custom-button:hover) {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-:deep(.custom-button .p-button-icon) {
-  margin-left: 1rem;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes fadeInOut {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
 }
 
 @media (max-width: 1400px) {
@@ -158,12 +132,11 @@ p {
     grid-template-columns: 1fr;
     gap: 0;
     height: 100%;
-    padding: 1rem;
-    overflow: hidden;
+    padding: var(--spacing-md);
   }
 
   .images-column {
-    margin-top: 2rem;
+    margin-top: var(--spacing-lg);
     gap: 0;
   }
 
@@ -186,7 +159,7 @@ p {
 
   .pikachu-image {
     max-width: 320px;
-    margin-top: -1rem;
+    margin-top: var(--spacing-sm);
   }
 }
 
@@ -198,13 +171,11 @@ p {
   }
 
   .content-grid {
-    padding: 1rem;
-    height: 100%;
-    overflow: hidden;
+    padding: var(--spacing-md);
   }
 
   .images-column {
-    margin-top: 1rem;
+    margin-top: var(--spacing-md);
   }
 
   .pokemon-logo {
@@ -225,11 +196,11 @@ p {
 
   p {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-lg);
   }
 
-  :deep(.custom-button) {
-    padding: 0.8rem 1.8rem;
+  :deep(.btn-primary) {
+    padding: var(--spacing-md) var(--spacing-lg);
     font-size: 1rem;
   }
 }

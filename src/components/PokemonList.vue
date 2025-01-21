@@ -27,7 +27,8 @@
         v-model:first="first"
         :rows="itemsPerPage"
         :totalRecords="filteredPokemons.length"
-        template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
+        template="FirstPageLink PrevPageLink CurrentPageReport PageLinks NextPageLink LastPageLink"
+        :currentPageReportTemplate="'{currentPage} de {totalPages}'"
         class="pokemon-paginator"
       />
     </div>

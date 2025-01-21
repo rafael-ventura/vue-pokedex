@@ -32,10 +32,10 @@ const handleSearch = (value) => {
 
 <style scoped>
 .navbar {
-  background-color: #ef5350 !important;
+  background-color: var(--primary-color) !important;
   border: none !important;
   border-radius: 0 !important;
-  padding: 0.5rem 2rem !important;
+  padding: var(--spacing-sm) var(--spacing-lg) !important;
 }
 
 .navbar-logo {
@@ -55,29 +55,29 @@ const handleSearch = (value) => {
   justify-content: flex-end;
 }
 
+.logo-link {
+  display: block;
+  transition: var(--transition-fast);
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem !important;
+    padding: var(--spacing-md) !important;
   }
 
   :deep(.p-toolbar-group-start),
   :deep(.p-toolbar-group-end) {
     width: 100%;
     justify-content: center;
-    margin: 0.5rem 0;
+    margin: var(--spacing-sm) 0;
   }
 
   :deep(.p-toolbar) {
     flex-direction: column;
   }
-}
-
-.logo-link {
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.logo-link:hover {
-  transform: scale(1.05);
 }
 </style>

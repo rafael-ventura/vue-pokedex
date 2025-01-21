@@ -1,20 +1,35 @@
 :root {
-  /* Brand Colors */
+  /* Colors */
   --primary-color: #ef5350;
   --secondary-color: #ff6b6b;
-  
-  /* Background Colors */
   --background-color: #f8f9fa;
+  --text-primary: #333;
+  --text-secondary: #666;
   --card-background: #ffffff;
-  
-  /* Text Colors */
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  
-  /* Border & Shadow */
+
+  /* Border Radius */
   --border-radius: 1.5rem;
-  --border-color: #e9ecef;
+
+  /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-index layers */
+  --z-index-base: 1;
+  --z-index-dropdown: 10;
+  --z-index-modal: 100;
+  --z-index-tooltip: 1000;
 } 

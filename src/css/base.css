@@ -1,4 +1,5 @@
 @import './variables.css';
+@import './components.css';
 @import './pokemon-types.css';
 
 body {
@@ -14,6 +15,32 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* Reset margins */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+/* Reset button styles */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Reset list styles */
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Reset link styles */
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .page-container {

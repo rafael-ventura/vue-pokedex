@@ -8,21 +8,21 @@
       <span class="pokemon-number">#{{ String(pokemonId).padStart(3, '0') }}</span>
       <h3 class="pokemon-name">{{ capitalizedName }}</h3>
       <div v-if="pokemonTypes.length" class="pokemon-types">
-        <span v-for="type in pokemonTypes" 
-              :key="type" 
-              class="type-badge"
-              :class="type">
-          {{ type }}
-        </span>
+        <TypeBadge 
+          v-for="type in pokemonTypes" 
+          :key="type" 
+          :type="type"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, defineProps } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import ProgressSpinner from 'primevue/progressspinner'
+import TypeBadge from './TypeBadge.vue'
 
 const props = defineProps({
   pokemon: {
@@ -76,7 +76,7 @@ onMounted(async () => {
   padding: 1.5rem;
   text-align: center;
   box-shadow: var(--shadow-sm);
-  transition: all 0.2s;
+  transition: var(--transition-fast);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -153,16 +153,5 @@ onMounted(async () => {
   justify-content: center;
   margin-top: 0.5rem;
 }
-
-.type-badge {
-  padding: 0.25rem 1rem;
-  border-radius: 1rem;
-  color: white;
-  font-size: 0.85rem;
-  text-transform: capitalize;
-}
-
-/* Remove all type-related styles as they are now in pokemon-types.css */
-
 </style>
 

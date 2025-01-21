@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import PrimeVue from 'primevue/config'
 import router from './router'
+import PrimeVue from 'primevue/config'
+import Tooltip from 'primevue/tooltip'
 
 // Import PrimeVue styles
 import 'primevue/resources/themes/lara-light-blue/theme.css'
@@ -18,5 +19,6 @@ app.use(PrimeVue, {
     inputStyle: "filled"
 })
 app.use(router)
+app.directive('tooltip', Tooltip)
 
 app.mount('#app')

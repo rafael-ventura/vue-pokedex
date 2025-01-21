@@ -23,15 +23,6 @@
         </div>
 
         <div class="pokemon-info">
-          <div class="types">
-            <span v-for="type in pokemon.types" 
-                  :key="type.slot" 
-                  class="type-badge"
-                  :class="type.type.name">
-              {{ type.type.name }}
-            </span>
-          </div>
-
           <div class="stats-container">
             <h3>Informações</h3>
             <div class="info-grid">
@@ -51,12 +42,20 @@
             <div class="abilities-grid">
               <div v-for="ability in pokemon.abilities" 
                    :key="ability.ability.name" 
-                   class="ability-item"
-                   :class="{ 'is-hidden': ability.is_hidden }">
+                   class="ability-item">
                 <span class="ability-name">{{ formatAbilityName(ability.ability.name) }}</span>
-                <span v-if="ability.is_hidden" class="hidden-tag">Oculta</span>
+                <TypeBadge 
+                  v-if="abilityTypes[ability.ability.name]"
+                  :type="abilityTypes[ability.ability.name]"
+                  class="ability-type"
+                />
               </div>
             </div>
+          </div>
+
+          <div class="type-advantages-container">
+            <h3>Vantagens de Ataque</h3>
+            <TypeRelations :types="pokemon.types.map(t => t.type.name)" />
           </div>
 
           <div class="stats-container">
@@ -102,12 +101,16 @@ import { useRoute, useRouter } from 'vue-router'
 import Button from 'primevue/button'
 import Message from 'primevue/message'
 import ProgressSpinner from 'primevue/progressspinner'
+import TypeRelations from './TypeRelations.vue'
+import TypeBadge from './TypeBadge.vue'
+import { pokemonService } from '../services/pokemonService'
 
 const route = useRoute()
 const router = useRouter()
 const pokemon = ref(null)
 const error = ref(null)
 const isShiny = ref(false)
+const abilityTypes = ref({})
 
 const currentPokemonImage = computed(() => {
   const baseUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
@@ -162,11 +165,23 @@ const goBack = () => {
   router.push('/pokedex')
 }
 
+const loadAbilityTypes = () => {
+  if (!pokemon.value) return
+  pokemon.value.abilities.forEach(ability => {
+    const abilityName = ability.ability.name
+    const type = pokemonService.getAbilityType(abilityName)
+    abilityTypes.value[abilityName] = type
+    console.log(`Ability: ${abilityName}, Type: ${type}`)
+  })
+  console.log('All ability types:', abilityTypes.value)
+}
+
 onMounted(async () => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${route.params.id}`)
     if (!response.ok) throw new Error('Pokémon não encontrado')
     pokemon.value = await response.json()
+    loadAbilityTypes()
   } catch (err) {
     console.error('Erro ao carregar detalhes do Pokémon:', err)
     error.value = 'Falha ao carregar os detalhes do Pokémon. Tente novamente mais tarde.'
@@ -257,14 +272,6 @@ onMounted(async () => {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
-}
-
-.type-badge {
-  padding: 0.5rem 1.5rem;
-  border-radius: 2rem;
-  color: white;
-  font-weight: 500;
-  text-transform: capitalize;
 }
 
 .info-grid {
@@ -370,32 +377,69 @@ onMounted(async () => {
 }
 
 .ability-item {
-  background: #f5f5f5;
-  padding: 0.75rem 1.25rem;
-  border-radius: 1rem;
-  position: relative;
-  transition: transform 0.2s;
-}
-
-.ability-item:hover {
-  transform: translateY(-2px);
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: var(--transition-fast);
+  min-width: 180px;
 }
 
 .ability-name {
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
+  padding: 0.75rem;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
 }
 
-.hidden-tag {
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  background: #ff6b6b;
-  color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
+.ability-type {
+  color: black;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin: 0.8px;
+}
+
+:deep(.ability-type .p-tag) {
+  flex: 1;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
   font-size: 0.75rem;
-  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Removendo estilos não mais necessários */
+.hidden-tag {
+  display: none;
+}
+
+/* Cores dos tipos */
+.grass { background: var(--grass-color) !important; }
+.fire { background: var(--fire-color) !important; }
+.water { background: var(--water-color) !important; }
+.bug { background: var(--bug-color) !important; }
+.normal { background: var(--normal-color) !important; }
+.poison { background: var(--poison-color) !important; }
+.electric { background: var(--electric-color) !important; }
+.ground { background: var(--ground-color) !important; }
+.fairy { background: var(--fairy-color) !important; }
+.fighting { background: var(--fighting-color) !important; }
+.psychic { background: var(--psychic-color) !important; }
+.rock { background: var(--rock-color) !important; }
+.ghost { background: var(--ghost-color) !important; }
+.ice { background: var(--ice-color) !important; }
+.dragon { background: var(--dragon-color) !important; }
+.dark { background: var(--dark-color) !important; }
+.steel { background: var(--steel-color) !important; }
+.flying { background: var(--flying-color) !important; }
+
+.type-advantages-container {
+  margin-top: 2rem;
 }
 
 @media (max-width: 1400px) {

@@ -2,8 +2,8 @@
   <div class="home-page">
     <div class="content-grid">
       <div class="images-column">
-        <img src="/logo.svg" alt="Pokemon Logo" class="pokemon-logo" />
-        <img src="/pikachu.svg" alt="Pikachu" class="pikachu-image" />
+        <img :src="require('@/assets/logo.svg')" alt="Pokemon Logo" class="pokemon-logo" />
+        <img :src="require('@/assets/pikachu.svg')" alt="Pikachu" class="pikachu-image" />
       </div>
       
       <div class="text-column">

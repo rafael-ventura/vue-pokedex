@@ -2,7 +2,7 @@
   <Toolbar class="navbar">
     <template #start>
       <router-link to="/" class="logo-link">
-        <img src="/pokedex-logo.png" alt="Pokédex" class="navbar-logo" />
+        <img :src="require('@/assets/pokedex-logo.png')" alt="Pokédex" class="navbar-logo" />
       </router-link>
     </template>
     <template #end>

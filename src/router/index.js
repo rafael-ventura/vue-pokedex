@@ -1,26 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '../views/Home.vue'
+import Home from '../components/Home.vue'
+import PokemonList from '../components/PokemonList.vue'
+import PokemonDetails from '../components/PokemonDetails.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomePage
+    component: Home
   },
   {
     path: '/pokedex',
     name: 'pokedex',
-    component: () => import('../views/Pokedex.vue')
+    component: PokemonList
   },
   {
     path: '/pokemon/:id',
     name: 'pokemon-details',
-    component: () => import('../views/PokemonDetails.vue')
+    component: PokemonDetails
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 

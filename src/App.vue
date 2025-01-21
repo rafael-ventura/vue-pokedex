@@ -1,27 +1,28 @@
 <template>
-  <div class="app">
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-  </div>
+  <NavBar @search="handleSearch" />
+  <router-view :search-query="searchQuery" />
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import NavBar from './components/NavBar.vue'
+
+const searchQuery = ref('')
+
+const handleSearch = (query) => {
+  searchQuery.value = query
+}
+</script>
 
 <style>
 .app {
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background: #f8f9fa;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+:root {
+  --primary-color: #2196F3;
+  --secondary-color: #00BCD4;
 }
 
 /* Reset some basic elements */

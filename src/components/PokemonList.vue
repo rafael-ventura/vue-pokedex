@@ -16,14 +16,6 @@
     </div>
 
     <div class="pokemon-grid">
-      <Paginator
-        v-model:first="first"
-        :rows="itemsPerPage"
-        :totalRecords="filteredPokemons.length"
-        template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
-        class="pokemon-paginator"
-      />
-
       <div class="grid-container">
         <PokemonCard
           v-for="pokemon in displayedPokemons"
@@ -31,6 +23,13 @@
           :pokemon="pokemon"
         />
       </div>
+      <Paginator
+        v-model:first="first"
+        :rows="itemsPerPage"
+        :totalRecords="filteredPokemons.length"
+        template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
+        class="pokemon-paginator"
+      />
     </div>
 
     <div v-if="loading" class="loading-overlay">
@@ -59,13 +58,13 @@ const props = defineProps({
 const pokemons = ref([])
 const loading = ref(true)
 const error = ref(null)
-const itemsPerPage = ref(parseInt(localStorage.getItem('itemsPerPage')) || 12)
+const itemsPerPage = ref(parseInt(localStorage.getItem('itemsPerPage')) || 10)
 const first = ref(parseInt(localStorage.getItem('paginationFirst')) || 0)
 
 const itemsPerPageOptions = [
-  { label: '12 por página', value: 12 },
-  { label: '24 por página', value: 24 },
-  { label: '48 por página', value: 48 }
+  { label: '10 por página', value: 10 },
+  { label: '25 por página', value: 25 },
+  { label: '50 por página', value: 50 }
 ]
 
 const filteredPokemons = computed(() => {

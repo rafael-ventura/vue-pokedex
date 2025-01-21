@@ -71,12 +71,12 @@ onMounted(async () => {
 
 <style scoped>
 .pokemon-card {
-  background: white;
-  border-radius: 1.5rem;
+  background: var(--card-background);
+  border-radius: var(--border-radius);
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -95,7 +95,7 @@ onMounted(async () => {
 
 .pokemon-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-md);
 }
 
 .pokemon-card:hover::before {
@@ -136,13 +136,13 @@ onMounted(async () => {
 }
 
 .pokemon-number {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .pokemon-name {
   margin: 0.5rem 0;
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -162,43 +162,7 @@ onMounted(async () => {
   text-transform: capitalize;
 }
 
-/* Type colors */
-.grass, .grass.type-badge { background-color: #78c850; }
-.fire, .fire.type-badge { background-color: #f08030; }
-.water, .water.type-badge { background-color: #6890f0; }
-.bug, .bug.type-badge { background-color: #a8b820; }
-.normal, .normal.type-badge { background-color: #a8a878; }
-.poison, .poison.type-badge { background-color: #a040a0; }
-.electric, .electric.type-badge { background-color: #f8d030; }
-.ground, .ground.type-badge { background-color: #e0c068; }
-.fairy, .fairy.type-badge { background-color: #ee99ac; }
-.fighting, .fighting.type-badge { background-color: #c03028; }
-.psychic, .psychic.type-badge { background-color: #f85888; }
-.rock, .rock.type-badge { background-color: #b8a038; }
-.ghost, .ghost.type-badge { background-color: #705898; }
-.ice, .ice.type-badge { background-color: #98d8d8; }
-.dragon, .dragon.type-badge { background-color: #7038f8; }
-.dark, .dark.type-badge { background-color: #705848; }
-.steel, .steel.type-badge { background-color: #b8b8d0; }
-.flying, .flying.type-badge { background-color: #a890f0; }
+/* Remove all type-related styles as they are now in pokemon-types.css */
 
-.grass::before { background-color: #78c850; }
-.fire::before { background-color: #f08030; }
-.water::before { background-color: #6890f0; }
-.bug::before { background-color: #a8b820; }
-.normal::before { background-color: #a8a878; }
-.poison::before { background-color: #a040a0; }
-.electric::before { background-color: #f8d030; }
-.ground::before { background-color: #e0c068; }
-.fairy::before { background-color: #ee99ac; }
-.fighting::before { background-color: #c03028; }
-.psychic::before { background-color: #f85888; }
-.rock::before { background-color: #b8a038; }
-.ghost::before { background-color: #705898; }
-.ice::before { background-color: #98d8d8; }
-.dragon::before { background-color: #7038f8; }
-.dark::before { background-color: #705848; }
-.steel::before { background-color: #b8b8d0; }
-.flying::before { background-color: #a890f0; }
 </style>
 

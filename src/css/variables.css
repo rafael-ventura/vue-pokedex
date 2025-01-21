@@ -1,0 +1,20 @@
+:root {
+  /* Brand Colors */
+  --primary-color: #ef5350;
+  --secondary-color: #ff6b6b;
+  
+  /* Background Colors */
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  
+  /* Text Colors */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  
+  /* Border & Shadow */
+  --border-radius: 1.5rem;
+  --border-color: #e9ecef;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+} 

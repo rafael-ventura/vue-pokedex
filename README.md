@@ -1,24 +1,57 @@
-# vue-pokedex
+# Vue Pokédex
 
-## Project setup
-```
-yarn install
+Uma Pokédex moderna construída com Vue 3, apresentando os 151 Pokémon originais.
+
+## 🚀 Atualizações Recentes
+
+- Migração completa do Vue 2 para Vue 3 + Composition API
+- Novo design moderno e responsivo
+- Implementação de animações suaves e transições
+- Melhorias na performance e carregamento
+- Adição de efeitos visuais e interações
+- Sistema de busca otimizado
+- Paginação personalizada (10/25/50 itens)
+
+## 🛠️ Tecnologias
+
+- Vue 3
+- Vue Router
+- PrimeVue
+- CSS Variables
+- Composition API
+- Vite
+
+## 🎨 Features
+
+- Lista completa dos 151 Pokémon originais
+- Detalhes de cada Pokémon (stats, tipos, habilidades)
+- Busca em tempo real
+- Layout responsivo
+- Animações suaves
+- Tema claro com cores do Pokémon
+- Paginação customizada
+
+## 🚀 Como Executar
+
+```bash
+# Instalar dependências
+npm install
+
+# Executar em desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## 📱 Screenshots
 
-### Compiles and minifies for production
-```
-yarn build
-```
+[Adicione screenshots aqui]
 
-### Lints and fixes files
-```
-yarn lint
-```
+## 🤝 Contribuições
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT.

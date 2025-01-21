@@ -17,9 +17,9 @@ Uma Pokédex moderna construída com Vue 3, apresentando os 151 Pokémon origina
 - Vue 3
 - Vue Router
 - PrimeVue
+- PokeApi
 - CSS Variables
 - Composition API
-- Vite
 
 ## 🎨 Features
 

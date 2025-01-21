@@ -5,6 +5,9 @@ on:
     branches:
       - main # ou master, dependendo da sua branch principal
 
+permissions:
+  contents: write # Importante: adiciona permissão de escrita
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -17,6 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
@@ -30,4 +34,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-          branch: gh-pages 
+          branch: gh-pages
+          clean: true # Limpa arquivos antigos
+          token: ${{ secrets.GITHUB_TOKEN }} # Usa o token padrão 

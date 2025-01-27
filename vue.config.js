@@ -1,12 +1,18 @@
 const { defineConfig } = require('@vue/cli-service');
-const path = require('path');
-
 module.exports = defineConfig({
   transpileDependencies: true,
+
+  // Define o caminho base para o projeto
   publicPath: process.env.NODE_ENV === 'production' ? '/vue-pokedex/' : '/',
-  outputDir: path.resolve(__dirname, 'dist'),
-  assetsDir: '', // Isso faz com que os arquivos sejam colocados diretamente no dist
-  filenameHashing: false, // Opcional, remove hashes dos nomes dos arquivos
+
+  // Gera arquivos diretamente no `dist`, sem subpastas
+  outputDir: 'dist',
+  assetsDir: '',
+
+  // Remove hashes opcionais dos arquivos para simplificar caminhos
+  filenameHashing: false,
+
+  // Configurações extras para saída de arquivos
   configureWebpack: {
     output: {
       filename: '[name].js',

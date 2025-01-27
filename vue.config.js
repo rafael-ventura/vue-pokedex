@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
 
   // Define o caminho base para o projeto
-  publicPath: process.env.NODE_ENV === 'production' ? '/vue-pokedex/' : '/',
+  publicPath: './',
 
   // Gera arquivos diretamente no `dist`, sem subpastas
   outputDir: 'dist',
